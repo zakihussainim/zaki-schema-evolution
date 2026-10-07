@@ -220,6 +220,9 @@ data "aws_iam_policy_document" "github_actions_permissions" {
       "lambda:GetEventSourceMapping",
       "lambda:UpdateEventSourceMapping",
       "lambda:ListEventSourceMappings",
+      "lambda:ListTags",
+      "lambda:TagResource",
+      "lambda:UntagResource",
     ]
     resources = ["*"]
   }
