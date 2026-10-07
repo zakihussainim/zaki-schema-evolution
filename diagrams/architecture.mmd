@@ -1,0 +1,14 @@
+flowchart LR
+    P["Producer CLI<br/>(Avro encode + wire frame)"] -->|PutRecords| K[("Kinesis stream<br/>1 shard")]
+    SR[["Glue Schema Registry<br/>sensor-reading, FULL compat"]]
+    P -. "register / check versions" .-> SR
+    K -->|"batch 100 / 5s window"| L["Lambda consumer<br/>python 3.12, arm64"]
+    L -. "GetSchemaVersion (cached)" .-> SR
+    L -->|"raw archive (original bytes)"| S3R[("S3 raw/")]
+    L -->|"curated JSON lines by event date"| S3C[("S3 curated/")]
+    L -->|"rejects and poison"| DLQ[["SQS dead-letter queue"]]
+    L -->|"EMF metrics"| CW["CloudWatch"]
+    K -. "iterator age alarm" .-> CW
+    DLQ -. "depth alarm" .-> CW
+    S3C --> A["Athena<br/>partition projection"]
+    S3R -->|"replay CLI, newer reader schema"| S3C
