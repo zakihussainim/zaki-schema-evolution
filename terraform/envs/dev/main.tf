@@ -6,7 +6,7 @@ locals {
   enable_streaming = true
 
   # Which schema version the consumer shapes records to. Change "1" to "2" and merge to upgrade the consumer.
-  consumer_reader_schema_version = "1"
+  consumer_reader_schema_version = "2"
 }
 
 module "storage" {
