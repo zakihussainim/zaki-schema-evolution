@@ -3,7 +3,7 @@ locals {
 
   # Flip to false and merge to destroy the stream, the consumer and the alarms (they cost money while they
   # exist: one Kinesis shard is roughly 11 pounds a month). Buckets, the registry and the catalog are free when idle.
-  enable_streaming = true
+  enable_streaming = false
 
   # Which schema version the consumer shapes records to. Change "1" to "2" and merge to upgrade the consumer.
   consumer_reader_schema_version = "2"
