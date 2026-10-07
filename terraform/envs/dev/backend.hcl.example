@@ -1,0 +1,3 @@
+# Copy to backend.hcl (not committed) and put your state bucket name in it.
+# The bucket name is printed by `terraform output` in terraform/bootstrap.
+bucket = "zaki-schema-evolution-tfstate-REPLACE_WITH_ACCOUNT_ID"

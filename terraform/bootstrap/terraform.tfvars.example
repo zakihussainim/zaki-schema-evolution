@@ -1,0 +1,2 @@
+# Copy this file to terraform.tfvars (which is not committed) and fill it in.
+github_repo_id = "REPLACE_WITH_THE_NUMERIC_REPO_ID"

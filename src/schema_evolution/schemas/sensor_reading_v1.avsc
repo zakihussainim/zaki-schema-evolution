@@ -1,0 +1,13 @@
+{
+  "type": "record",
+  "name": "SensorReading",
+  "namespace": "events.sensors",
+  "doc": "One reading from an environmental sensor. Version 1.",
+  "fields": [
+    {"name": "event_id", "type": "string"},
+    {"name": "device_id", "type": "string"},
+    {"name": "event_time", "type": {"type": "long", "logicalType": "timestamp-millis"}},
+    {"name": "temperature_c", "type": "double"},
+    {"name": "humidity_pct", "type": "double"}
+  ]
+}
